@@ -5,9 +5,11 @@ import { getMovies, getShows } from "../../redux/movies/movieAction";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const movie = "Harry";
+  const show = "Friends";
   useEffect(() => {
-    dispatch(getMovies());
-    dispatch(getShows());
+    dispatch(getMovies(movie));
+    dispatch(getShows(show));
   }, [dispatch]);
   return <MovieListing />;
 };

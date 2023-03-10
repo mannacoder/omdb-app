@@ -2,12 +2,11 @@ import movieApi from "../../common/apis/movieApi";
 import { APIKey } from "../../common/apis/movieApiKey";
 import { addMovies, addShows, movieOrShowDetails } from "./movieSlice";
 
-export const getMovies = () => {
+export const getMovies = (searchTerm) => {
   return async (dispatch) => {
     const fetchMovies = async () => {
-      const movieText = "Harry";
       const response = await movieApi
-        .get(`?apiKey=${APIKey}&s=${movieText}&type=movie`)
+        .get(`?apiKey=${APIKey}&s=${searchTerm}&type=movie`)
         .catch((err) => {
           console.log(err);
         });
@@ -23,12 +22,11 @@ export const getMovies = () => {
   };
 };
 
-export const getShows = () => {
+export const getShows = (searchTerm) => {
   return async (dispatch) => {
     const fetchShows = async () => {
-      const seriesText = "Friends";
       const response = await movieApi
-        .get(`?apiKey=${APIKey}&s=${seriesText}&type=series`)
+        .get(`?apiKey=${APIKey}&s=${searchTerm}&type=series`)
         .catch((err) => {
           console.log(err);
         });
